@@ -7,9 +7,8 @@ import OTPVerification from "./Component/Register/OTPVerification";
 import { Home } from "./Pages/Home";
 import { Courses } from "./Pages/Courses";
 import { Practice } from "./Pages/Practice";
-import Software from "./Pages/Software"; // Assuming Software is exported correctly
-import Hardware from "./Pages/Hardware"; // Ensure this import is correct
-
+import Software from "./Pages/Software"; 
+import Hardware from "./Pages/Hardware";
 function App() {
   return (
     <Router>
