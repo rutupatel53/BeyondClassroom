@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Project A",
+    "description": "This is the description of Project A.",
+    "image": "https://via.placeholder.com/150",
+    "link": "https://github.com/rutupatel53/Moodify"
+  },
+  {
+    "id": 2,
+    "name": "Project B",
+    "description": "This is the description of Project B wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwwwwwwww qqqqqqqqqqqqqqqqqqqqwwwwwwwwww wwwwwwwwwwww.",
+    "image": "https://via.placeholder.com/150",
+    "link": "https://example.com/project_b"
+  },
+  {
+    "id": 3,
+    "name": "Project C",
+    "description": "This is the description of Project C.",
+    "image": "https://via.placeholder.com/150",
+    "link": "https://example.com/project_c"
+  },
+  {
+    "id": 4,
+    "name": "Project D",
+    "description": "This is the description of Project D.",
+    "image": "https://via.placeholder.com/150",
+    "link": "https://example.com/project_d"
+  },
+  {
+    "id": 5,
+    "name": "Project E",
+    "description": "This is the description of Project E.",
+    "image": "https://via.placeholder.com/150",
+    "link": "https://example.com/project_e"
+  },
+  {
+    "id": 6,
+    "name": "Project F",
+    "description": "This is the description of Project D.",
+    "image": "https://via.placeholder.com/150",
+    "link": "https://example.com/project_f"
+  }
+]

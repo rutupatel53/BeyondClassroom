@@ -7,8 +7,9 @@ import OTPVerification from "./Component/Register/OTPVerification";
 import { Home } from "./Pages/Home";
 import { Courses } from "./Pages/Courses";
 import { Practice } from "./Pages/Practice";
-import Software from "./Pages/Software"; 
+import Software from "./Pages/Software";
 import Hardware from "./Pages/Hardware";
+import AddProjectForm from "./Component/softwareprojectcard/Addproject";
 function App() {
   return (
     <Router>
@@ -22,6 +23,7 @@ function App() {
         <Route path="/otpverification" element={<OTPVerification />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
+        <Route path="/addproject" element={<AddProjectForm />}></Route>
       </Routes>
     </Router>
   );
