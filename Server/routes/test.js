@@ -2,11 +2,21 @@ const express = require("express");
 const router = express.Router();
 
 //import controllers
-const { getTest } = require("../controllers/test");
+const {
+  getprojectdata,
+  createdata,
+  getprojectdid,
+  deletepdata,
+  updatedata,
+} = require("../controllers/ProjectdController");
 
 //import middlewares
 
 //api routes
-router.get("/test", getTest);
-
+router.get("/", getprojectdata);
+router.get("/", getprojectdid);
+router.post("/", createdata);
+// router.post('/upload',uploadimage)
+router.delete("/:id", deletepdata);
+router.patch("/:id", updatedata);
 module.exports = router;
