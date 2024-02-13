@@ -10,6 +10,8 @@ import { Practice } from "./Pages/Practice";
 import Software from "./Pages/Software";
 import Hardware from "./Pages/Hardware";
 import AddProjectForm from "./Component/softwareprojectcard/Addproject";
+import CoursesSlider from "./Component/CourseCardItem/CourseCarditem";
+import AdminLogin from "./Component/AdminLogin/AdminLogin";
 function App() {
   return (
     <Router>
@@ -24,6 +26,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/addproject" element={<AddProjectForm />}></Route>
+        <Route path="/courseslide" element={<CoursesSlider />} />
+        <Route path="/Adminlogin" element={<AdminLogin />}></Route>
       </Routes>
     </Router>
   );

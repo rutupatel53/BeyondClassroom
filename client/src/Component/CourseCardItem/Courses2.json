@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "imageUrl": "https://i.imgur.com/example.jpg",
+    "title": "Course 1",
+    "description": "Description of Course 1",
+    "rating": 4.5,
+    "link": "https://example.com/course1"
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://i.imgur.com/example.jpg",
+    "title": "Course 2",
+    "description": "Description of Course 2",
+    "rating": 4.7,
+    "link": "https://example.com/course2"
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://i.imgur.com/example.jpg",
+    "title": "Course 2",
+    "description": "Description of Course 2",
+    "rating": 4.7,
+    "link": "https://example.com/course2"
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://i.imgur.com/example.jpg",
+    "title": "Course 2",
+    "description": "Description of Course 2",
+    "rating": 4.7,
+    "link": "https://example.com/course2"
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://i.imgur.com/example.jpg",
+    "title": "Course 2",
+    "description": "Description of Course 2",
+    "rating": 4.7,
+    "link": "https://example.com/course2"
+  }
+]

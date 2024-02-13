@@ -20,7 +20,7 @@ const AddProjectForm = ({ onAddProject }) => {
         link: values.link,
       };
       // Send data to server using Axios POST request
-      await axios.post("your_api_endpoint", newProject);
+      await axios.post("http://localhost:5000/getprojectdata", newProject);
       onAddProject(newProject);
       message.success("Project added successfully!");
     } catch (error) {
@@ -47,8 +47,6 @@ const AddProjectForm = ({ onAddProject }) => {
       }
     },
   };
-  
-
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white  rounded-md shadow-md mt-6">

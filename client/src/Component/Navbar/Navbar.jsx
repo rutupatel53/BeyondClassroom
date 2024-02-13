@@ -36,13 +36,14 @@ export const Navbar = () => {
                 <LeftMenu mode={"horizontal"} />
               </div>
               <a href="/">
-                <img
+                {/* <img
                   src={logo}
                   alt="logo"
                   className="w-16 h-10 md:w-24 lg:w-32 xl:w-40"
-                />
-                <h3 className="text-xl ml-10 sm:text-5xl md:text-xl lg:text-2xl xl:text-3xl font-semibold text-center mt-2">
-                  BeyondClassroom
+                /> */}
+                <h3 className="text-xl ml-32 sm:text-5xl md:text-xl lg:text-2xl xl:text-3xl font-semibold text-center mt-2">
+                  <span className="text-green-500 font-custom">Beyond</span>
+                  <span className="font-custom">Classroom</span>
                 </h3>
               </a>
             </div>
