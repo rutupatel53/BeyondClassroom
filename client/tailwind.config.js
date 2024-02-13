@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = { plugins: [require('postcss-nesting')],
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
-  },
-  plugins: [],
+  }
+ 
 };
