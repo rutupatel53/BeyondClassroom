@@ -2,15 +2,15 @@ const express = require("express");
 const router = express.Router();
 
 //import controllers
-const { getprojectdata,createdata,getprojectdid,deletepdata,updatedata } = require("../controllers/ProjectdController");
-
+const { index,show,store,update,destroy } = require("../controllers/ProjectdController");
+const upload=require('../middleware/upload')
+const authenticate =require('../middleware/authenticate')
 //import middlewares
 
 //api routes
-router.get("/", getprojectdata);
-router.get('/',getprojectdid)
-router.post('/', createdata)
-// router.post('/upload',uploadimage)
-router.delete("/:id",deletepdata)
-router.patch('/:id',updatedata)
+router.get('/',index)//add authenticate
+router.post('/show',show)
+router.post('/store',upload.single('image'),store)
+router.post('/update',update)
+router.post('/delete',destroy)
 module.exports = router;
