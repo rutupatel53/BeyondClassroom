@@ -47,6 +47,8 @@ const AddProjectForm = ({ onAddProject }) => {
       }
     },
   };
+  
+
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white  rounded-md shadow-md mt-6">
