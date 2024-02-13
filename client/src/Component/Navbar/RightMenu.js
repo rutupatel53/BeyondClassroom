@@ -34,13 +34,13 @@ const RightMenu = ({ mode }) => {
           <LoginOutlined /> login
         </Menu.Item>
         <Menu.Item
-          key="Facultylogin"
+          key="AdminLogin"
           onClick={() => {
-            setMenu("Facultylogin");
-            navigate("/FacultyLogin");
+            setMenu("AdminLogin");
+            navigate("/AdminLogin");
           }}
         >
-          <LoginOutlined /> Faculty login
+          <LoginOutlined /> Admin login
         </Menu.Item>
       </Menu.SubMenu>
     </Menu>

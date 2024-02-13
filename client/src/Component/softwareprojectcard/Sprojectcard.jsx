@@ -9,7 +9,7 @@ const ProjectCard = ({ project }) => {
   };
 
   if (!project || !project.image) {
-    return null; // or render a placeholder or error message
+    return null;
   }
 
   return (
