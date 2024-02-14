@@ -1,3 +1,124 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+
+.card {
+  width: 350px;
+  height: 220px;
+  background-color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.4s ease, top 0.4s ease, width 0.4s ease,
+    height 0.4s ease;
+}
+
+.card:hover,
+.card.active {
+  box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.5);
+  top: -5px;
+}
+
+.card.active {
+  width: 500px;
+  height: 600px;
+}
+
+.filler {
+  position: absolute;
+  right: -100%;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-color: #222222;
+  transition: top 0.3s ease, right 0.3s ease, border-radius 0.3s ease;
+}
+
+.filler.active {
+  right: 0%;
+  top: 0%;
+  border-radius: 0%;
+}
+
+.filler div {
+  opacity: 0;
+}
+
+.filler.active div {
+  opacity: 1;
+  transition: opacity 1.5s ease;
+}
+
+.f-title {
+  width: 100%;
+  color: white;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.f-subtitle {
+  text-align: center;
+  color: #cccccc;
+  width: 80%;
+  margin-left: 10%;
+  border-bottom: solid 1px white;
+  padding-bottom: 20px;
+}
+
+.episode {
+  width: 100%;
+  color: #eeeeee;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.episode .e-title {
+  margin: 15px 10%;
+}
+
+.episode:nth-child(2n) {
+  background-color: #292929;
+}
+
+.episode:hover {
+  background-color: #333333;
+}
+
+.top-half {
+  width: 100%;
+  height: 150px;
+  background-color: #333333;
+  background-image: url(http://www.invokemedia.com/wp-content/uploads/2015/07/angular.png);
+  background-size: auto 130%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.bottom-half {
+  margin-left: 5%;
+  margin-top: 12px;
+  width: 90%;
+  text-align: center;
+}
+
+.bottom-half .title {
+  font-size: 22px;
+  color: #555555;
+  margin-bottom: 2px;
+}
+
+.bottom-half .subtitle {
+  font-size: 12px;
+  color: #999999;
+}

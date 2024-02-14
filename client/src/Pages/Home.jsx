@@ -8,7 +8,8 @@ export const Home = () => {
       .then((res) => {
         setData(res.message);
       })
-      .catch((err) => console.log(err));
+     
+ .catch((err) => console.log(err));
   }, []);
   return (
     <div>

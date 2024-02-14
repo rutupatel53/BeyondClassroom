@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Backend for BeyondClassroom",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon server.js",
     "test": "",
-    "dev": "npm app.js"
+    "dev": "npm server.js"
   },
   "author": "Rutu",
   "license": "ISC",
