@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { AutoComplete } from "antd";
 import ProjectCard from "../Component/softwareprojectcard/Sprojectcard";
 import projectsData from "../Component/softwareprojectcard/sprojects.json";
+import { Link } from "react-router-dom";
 
 const { Option } = AutoComplete;
 
@@ -83,6 +84,14 @@ const Software = () => {
         {filteredProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
+      </div>
+      <div className="ml-[550px]">
+        <button
+          className="bg-green-500 w-80 h-16 border-gray-400 text-white ml-32
+      font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
+        >
+          <Link to={"/addproject"}> Add New Project</Link>
+        </button>
       </div>
     </div>
   );

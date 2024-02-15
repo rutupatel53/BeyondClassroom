@@ -12,6 +12,11 @@ import Hardware from "./Pages/Hardware";
 import AddProjectForm from "./Component/softwareprojectcard/Addproject";
 import CoursesSlider from "./Component/CourseCardItem/CourseCarditem";
 import AdminLogin from "./Component/AdminLogin/AdminLogin";
+import RecommendationForm from "./Component/Recommendation Form/RecommendationForm";
+import Footer from "./Component/Footer/footer";
+import { Event } from "./Component/Event/Event";
+import AdminPanel from "./Component/AdminPanel/AdminPanel";
+import AbstractBackground from "./Component/AbstractBg/AbstractBg";
 function App() {
   return (
     <Router>
@@ -28,7 +33,16 @@ function App() {
         <Route path="/addproject" element={<AddProjectForm />}></Route>
         <Route path="/courseslide" element={<CoursesSlider />} />
         <Route path="/Adminlogin" element={<AdminLogin />}></Route>
+        <Route
+          path="RecommendationForm"
+          element={<RecommendationForm />}
+        ></Route>
+        <Route Component={<Footer />}></Route>
+        <Route Component={<Event />}></Route>
+        <Route path="/adminpanel" element={<AdminPanel />}></Route>
+        <Route Component={<AbstractBackground />}></Route>
       </Routes>
+      <Footer />
     </Router>
   );
 }
