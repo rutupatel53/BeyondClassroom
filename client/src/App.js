@@ -16,7 +16,7 @@ import RecommendationForm from "./Component/Recommendation Form/RecommendationFo
 import Footer from "./Component/Footer/footer";
 import { Event } from "./Component/Event/Event";
 import AdminPanel from "./Component/AdminPanel/AdminPanel";
-import AbstractBackground from "./Component/AbstractBg/AbstractBg";
+// import AbstractBackground from "./Component/AbstractBg/AbstractBg";
 function App() {
   return (
     <Router>
@@ -40,7 +40,7 @@ function App() {
         <Route Component={<Footer />}></Route>
         <Route Component={<Event />}></Route>
         <Route path="/adminpanel" element={<AdminPanel />}></Route>
-        <Route Component={<AbstractBackground />}></Route>
+        {/* <Route Component={<AbstractBackground />}></Route> */}
       </Routes>
       <Footer />
     </Router>
