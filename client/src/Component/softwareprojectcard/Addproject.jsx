@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Input, Button, Form, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import axios from "axios";
@@ -7,22 +7,31 @@ const { TextArea } = Input;
 
 const AddProjectForm = ({ onAddProject }) => {
   const [form] = Form.useForm();
+  const [uploading, setUploading] = useState(false);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (values) => {
     try {
-      const values = await form.validateFields();
-      form.resetFields();
-      const newProject = {
-        id: Date.now(),
-        name: values.name,
-        description: values.description,
-        image: values.image[0].thumbUrl,
-        link: values.link,
-      };
-      // Send data to server using Axios POST request
-      await axios.post("http://localhost:5000/getprojectdata", newProject);
-      onAddProject(newProject);
-      message.success("Project added successfully!");
+      const formData = new FormData();
+      formData.append("title", values.name);
+      formData.append("description", values.description);
+      formData.append("link", values.link);
+      formData.append("image", values.image[0].originFileObj);
+
+      const response = await axios.post("/api/test/store", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      if (response && response.status === 200) {
+        message.success("Project added successfully!");
+        form.resetFields();
+        if (typeof onAddProject === "function") {
+          onAddProject(); // Notify parent component about the new project added
+        }
+      } else {
+        throw new Error("Failed to add project");
+      }
     } catch (error) {
       console.error("Error adding project:", error);
       message.error("Failed to add project. Please try again later.");
@@ -34,22 +43,26 @@ const AddProjectForm = ({ onAddProject }) => {
       const isJpgOrPng =
         file.type === "image/jpeg" || file.type === "image/png";
       if (!isJpgOrPng) {
-        message.error("You can only upload JPG/PNG file!");
+        message.error("You can only upload JPG/PNG files!");
       }
       return isJpgOrPng;
     },
     onChange: (info) => {
-      const { status, name } = info.file;
-      if (status === "done") {
-        message.success(`${name} file uploaded successfully`);
-      } else if (status === "error") {
-        message.error(`${name} file upload failed.`);
+      if (info.file.status === "uploading") {
+        setUploading(true);
+      }
+      if (info.file.status === "done") {
+        message.success(`${info.file.name} uploaded successfully`);
+        setUploading(false);
+      } else if (info.file.status === "error") {
+        message.error(`${info.file.name} upload failed.`);
+        setUploading(false);
       }
     },
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white  rounded-md shadow-md mt-6">
+    <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md mt-6">
       <h1 className="text-xl font-semibold mb-4">Add New Project</h1>
       <Form form={form} onFinish={handleSubmit} layout="vertical">
         <Form.Item
@@ -74,23 +87,22 @@ const AddProjectForm = ({ onAddProject }) => {
           getValueFromEvent={(e) => e.fileList}
         >
           <Upload {...uploadProps} listType="picture">
-            <Button icon={<UploadOutlined />}>Click to upload</Button>
+            <Button icon={<UploadOutlined />} loading={uploading}>
+              Click to upload
+            </Button>
           </Upload>
         </Form.Item>
-        <Form.Item
-          name="link"
-          label="Project Link"
-          rules={[{ required: true, message: "Please enter project link" }]}
-        >
+        <Form.Item name="link" label="Project Link">
           <Input placeholder="Project Link" />
         </Form.Item>
         <Form.Item>
-          <button
+          <Button
             htmlType="submit"
             className="bg-blue-400 border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
+            loading={uploading}
           >
             Add Project
-          </button>
+          </Button>
         </Form.Item>
       </Form>
     </div>

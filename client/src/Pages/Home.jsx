@@ -32,7 +32,7 @@ export const Home = () => {
             <img
               src={web}
               alt="BeyondClassroom"
-              className="w-fit h-[500px] ml-80 pb-16"
+              className="w-fit h-[500px] ml-24 pb-16"
             />
           </div>
           <div className="mx-auto  py-32 sm:py-48 lg:py-56">
