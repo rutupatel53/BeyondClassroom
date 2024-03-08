@@ -11,13 +11,6 @@ require("dotenv").config();
 
 // //app
 const app = express();
-app.use(
-  cors({
-    origin: ["https://beyond-classroom.vercel.app/"],
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
 // //db
 mongoose
   .connect(process.env.MONGO_URI, {
