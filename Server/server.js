@@ -13,7 +13,7 @@ require("dotenv").config();
 const app = express();
 app.use(
   cors({
-    origin: ["#"],
+    origin: ["https://beyond-classroom.vercel.app/"],
     methods: ["POST", "GET"],
     credentials: true,
   })
