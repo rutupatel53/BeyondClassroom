@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 // // const multer = require('multer');
 const workoutRoutes = require("./routes/test");
 const AuthRoute = require("./routes/auth");
+const FacAuthRoute = require("./routes/faculty");
 require("dotenv").config();
 
 // //app
@@ -38,9 +39,10 @@ app.use((req, res, next) => {
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("uploads")); //globally upload
 //routes
 app.use("/api/test", workoutRoutes);
-app.use("/api", AuthRoute);
+app.use("/login", AuthRoute);
+app.use("/fac", FacAuthRoute);
 //port
 const port = process.env.PORT || 5000;
