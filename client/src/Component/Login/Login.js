@@ -1,12 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { useNavigate, NavLink } from "react-router-dom";
-import vmc from "../../Assets/BeyondClassroom.jpg";
-import basestyle from "../Register/Base.module.css";
-import loginstyle from "../Login/Login.module.css";
-import { Spin } from "antd";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios"; // Import Axios
+
 const Login = () => {
+  const navigate = useNavigate();
+
+  // State variables
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Function to handle form submission
+  const handleLogin = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post("/api/login", {
+        username,
+        password,
+      });
+      if (response && response.data) {
+        console.log("Login successful:", response.data);
+        navigate("/", { replace: true }); // Corrected function name to navigate
+      } else {
+        throw new Error("Invalid response from server");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("An error occurred during login");
+    }
+    setLoading(false);
+  };
+
   return (
     <>
       <section className="bg-gray-50">
@@ -26,6 +55,8 @@ const Login = () => {
                     prefix={<UserOutlined />}
                     placeholder="Username"
                     className="rounded-lg"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)} // Update username state
                   />
                 </Form.Item>
                 <Form.Item
@@ -36,6 +67,8 @@ const Login = () => {
                     prefix={<LockOutlined />}
                     placeholder="••••••••"
                     className="rounded-lg"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} // Update password state
                   />
                 </Form.Item>
                 <Form.Item>
@@ -50,10 +83,17 @@ const Login = () => {
                   </a>
                 </Form.Item>
                 <Form.Item>
-                  <Button className={basestyle.button_common} htmlType="submit">
-                    Sign in
+                  <Button
+                    className="bg-green-500 w-44 h-16 border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
+                    type="primary"
+                    loading={loading}
+                    onClick={handleLogin} // Call handleLogin on button click
+                  >
+                    Log in
                   </Button>
                 </Form.Item>
+                {error && <p className="text-red-500">{error}</p>}{" "}
+                {/* Display error message if present */}
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
                   <NavLink
