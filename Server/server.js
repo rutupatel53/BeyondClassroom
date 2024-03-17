@@ -6,6 +6,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 // // const multer = require('multer');
 const workoutRoutes = require("./routes/test");
+const hardwareRoutes = require("./routes/hardware");
 const AuthRoute = require("./routes/auth");
 const FacAuthRoute = require("./routes/faculty");
 require("dotenv").config();
@@ -42,6 +43,7 @@ app.use(bodyParser.json());
 app.use("/uploads", express.static("uploads")); //globally upload
 //routes
 app.use("/api/test", workoutRoutes);
+app.use("/api/hardware", hardwareRoutes);
 app.use("/login", AuthRoute);
 app.use("/fac", FacAuthRoute);
 //port
