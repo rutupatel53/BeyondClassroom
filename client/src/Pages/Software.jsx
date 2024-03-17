@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AutoComplete } from "antd";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import ProjectCard from "../Component/softwareprojectcard/Sprojectcard";
-import projectsData from "../Component/softwareprojectcard/sprojects.json";
-
-const { Option } = AutoComplete;
 
 const Software = () => {
   const [projects, setProjects] = useState([]);
@@ -13,17 +12,31 @@ const Software = () => {
   const inputRef = useRef(null);
 
   useEffect(() => {
-    setProjects(projectsData);
-    setFilteredProjects(projectsData);
+    console.log("Fetching projects...");
+    fetchProjects();
   }, []);
+
+  const fetchProjects = async () => {
+    try {
+      const response = await axios.get("api/test/");
+      if (response && response.data && Array.isArray(response.data.response)) {
+        setProjects(response.data.response);
+        setFilteredProjects(response.data.response);
+      } else {
+        console.error("Invalid data received from the server:", response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    }
+  };
 
   const handleSearch = (value) => {
     setSearchValue(value);
     if (!value) {
-      setFilteredProjects(projectsData);
+      setFilteredProjects(projects);
     } else {
-      const filtered = projectsData.filter((project) =>
-        project.name.toLowerCase().includes(value.toLowerCase())
+      const filtered = projects.filter((project) =>
+        project.title.toLowerCase().includes(value.toLowerCase())
       );
       setFilteredProjects(filtered);
     }
@@ -31,9 +44,9 @@ const Software = () => {
 
   const handleSearchSuggestions = (value) => {
     setSearchValue(value);
-    const suggestions = projectsData
-      .map((project) => project.name)
-      .filter((name) => name.toLowerCase().includes(value.toLowerCase()));
+    const suggestions = projects
+      .map((project) => project.title)
+      .filter((title) => title.toLowerCase().includes(value.toLowerCase()));
     setSearchSuggestions(suggestions);
   };
 
@@ -55,21 +68,15 @@ const Software = () => {
 
   return (
     <div className="container mx-auto my-8">
-      <h1 className="text-3xl ml-[600px] font-semibold mb-4">
-        Software Projects
-      </h1>
+      <h1 className="text-3xl font-semibold mb-4">Software Projects</h1>
       <AutoComplete
         ref={inputRef}
         value={searchValue}
         style={{ width: "40%" }}
-        className="ml-[400px]"
+        className="mb-4"
         options={searchSuggestions.map((value) => ({
           value,
-          label: (
-            <option key={value} value={value} style={{ color: "black" }}>
-              {value}
-            </option>
-          ),
+          label: value,
         }))}
         onSelect={handleSelect}
         onSearch={handleSearchSuggestions}
@@ -79,10 +86,15 @@ const Software = () => {
         allowClear
         size="large"
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard key={project._id} project={project} />
         ))}
+      </div>
+      <div className="ml-4">
+        <button className="bg-green-500 w-80 h-16 text-white font-semibold py-2 px-6 hover:bg-green-600 rounded-full">
+          <Link to={"/addproject"}>Add New Project</Link>
+        </button>
       </div>
     </div>
   );

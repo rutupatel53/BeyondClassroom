@@ -1,20 +1,12 @@
-import React, { useState } from "react";
-import AddProjectForm from "./Addproject";
+import React from "react";
 
 const ProjectCard = ({ project }) => {
-  const [projects, setProjects] = useState([]);
-
-  const handleAddProject = (newProject) => {
-    setProjects([...projects, newProject]);
-  };
-
   if (!project || !project.image) {
     return null;
   }
 
   return (
     <div className="border border-gray-200 rounded p-4 m-2 shadow-md hover:shadow-lg transition duration-300">
-      <ProjectCard projects={projects} onAddProject={handleAddProject} />
       <div className="relative">
         <a href={project.link} target="_blank" rel="noopener noreferrer">
           <img
@@ -29,7 +21,7 @@ const ProjectCard = ({ project }) => {
           </div>
         </a>
       </div>
-      <h2 className="text-lg font-semibold">{project.name}</h2>
+      <h2 className="text-lg font-semibold">{project.title}</h2>
       <p className="text-gray-600">{project.description}</p>
     </div>
   );
