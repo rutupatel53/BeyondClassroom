@@ -1,40 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Button, Select, Spin } from "antd";
+import { Form, Input, Button, Spin } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.min.css";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import basestyle from "../Register/Base.module.css";
-// import loginstyle from "../Login/Login.module.css";
-// import { useAuth } from "../../AuthProvider";
-// Example imports
-import { Switch, Route } from "react-router-dom";
-
-const { Option } = Select;
 
 const AdminLogin = ({ setUserState }) => {
   const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
-  //   const { setAuth } = useAuth();
+  const [error, setError] = useState(null);
   const [user, setUserDetails] = useState({
     username: "",
     password: "",
-    role: "",
   });
-  const changeHandler = (value, changedValues) => {
+
+  const changeHandler = (changedValues) => {
     setUserDetails({
       ...user,
       ...changedValues,
     });
   };
+
   const onFinish = async () => {
     // Handle the form submission logic here if needed
   };
+
   const validateForm = (values) => {
     const error = {};
 
@@ -53,57 +44,39 @@ const AdminLogin = ({ setUserState }) => {
     try {
       const errors = validateForm(user);
       setFormErrors(errors);
-      setIsSubmit(true);
-      setLoading(true);
 
       if (Object.keys(errors).length === 0) {
-        const selectedRole = user.role;
-        const response = await axios.post(``, user, {
+        setLoading(true);
+        const response = await axios.post(`fac/login`, user, {
           withCredentials: true,
         });
-        // console.log("Response from server:", response.data);
+        navigate("/");
         setLoading(false);
-        // toast("Logged in successfully");
 
-        // setAuth(true);
-        localStorage.setItem("token", response.data.token);
-        setUserState(response.data.User);
-
-        switch (selectedRole) {
-          case "Faculty":
-            navigate("", { replace: true });
-            break;
-          case "Hod":
-            navigate("/", { replace: true });
-            break;
-          case "Admin":
-            navigate("/", { replace: true });
-            break;
-          default:
-            navigate("/", { replace: true });
-            break;
-        }
+        localStorage.setItem("token", response?.data?.token);
+        setUserState(response?.data?.User);
       }
     } catch (err) {
       setLoading(false);
-      console.log(err.message);
-      // Handle error, you might want to toast the error message
-      // toast.error(err.response.data.message);
+      if (err.response && err.response.data) {
+        setError(err.response.data.message);
+      } else {
+        setError("An error occurred during login. Please try again.");
+      }
     }
   };
+
   useEffect(() => {
     form.setFieldsValue({
       username: "",
       password: "",
-      role: "",
     });
   }, [formErrors]);
 
   return (
     <>
-      {/* <ToastContainer /> */}
-      <section className="bg-white dark:bg-White">
-        <div className="flex flex-col items-center justify-center w-full  sm:w-auto ml-0  md:w-auto mb-24 mt-10 mx-auto h-fit ">
+      <section className="bg-white">
+        <div className="flex flex-col items-center justify-center w-full sm:w-auto ml-0 md:w-auto mb-24 mt-10 mx-auto h-fit ">
           <div className="bg-white border-2 border-gray-300 shadow-md rounded p-4 text-center">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <Spin spinning={loading} tip="Logging You In.... Please Wait." />
@@ -113,7 +86,7 @@ const AdminLogin = ({ setUserState }) => {
                 onFinish={onFinish}
                 onValuesChange={changeHandler}
               >
-                <h1 className="text-xl font-bold mb-4  leading-tight tracking-tight text-black md:text-2xl ">
+                <h1 className="text-xl font-bold mb-4 leading-tight tracking-tight text-black md:text-2xl">
                   Login As Admin
                 </h1>
                 <Form.Item
@@ -136,33 +109,21 @@ const AdminLogin = ({ setUserState }) => {
                     className="rounded-lg"
                   />
                 </Form.Item>
-                <Form.Item
-                  name="role"
-                  label="Select Admin Type"
-                  rules={[{ required: true, message: "User type is required" }]}
-                >
-                  <Select
-                    className="w-96"
-                    placeholder="Please Select Admin Type"
-                    onChange={(value) =>
-                      setUserDetails({ ...user, role: value })
-                    }
-                  >
-                    <Option value="Faculty">Faculty</Option>
-                    <Option value="Hod">Hod</Option>
-                    <Option value="Admin">Admin</Option>
-                  </Select>
-                </Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  onClick={loginHandler}
-                  className={basestyle.button_common}
-                >
+                <Button type="primary" htmlType="submit" onClick={loginHandler}>
                   Login
                 </Button>
+                {error && <p className="text-red-500">{error}</p>}
+                <p className="text-sm font-light text-gray-500">
+                  Don’t have an account yet?{" "}
+                  <NavLink
+                    to="/AdminRegister"
+                    className="font-medium text-primary-600 hover:underline"
+                  >
+                    Sign up
+                  </NavLink>
+                </p>
               </Form>
-            </div>{" "}
+            </div>
           </div>
         </div>
       </section>
