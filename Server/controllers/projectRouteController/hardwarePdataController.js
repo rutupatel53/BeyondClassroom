@@ -1,5 +1,5 @@
 const { response } = require("express");
-const Hprodata = require("../model/HData");
+const Hprodata = require("../../model/hardware");
 const mongoose = require("mongoose");
 
 //show project details
