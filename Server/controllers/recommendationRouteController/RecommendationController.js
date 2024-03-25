@@ -1,4 +1,4 @@
-const Recommendation = require("../model/recommendation");
+const Recommendation = require("../../model/recommendation");
 const mongoose = require("mongoose");
 // Controller function to handle form submission
 const submitForm = (req, res, next) => {

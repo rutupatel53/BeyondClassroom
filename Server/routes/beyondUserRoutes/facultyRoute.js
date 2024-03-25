@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const facauthenticate = require("../middleware/faculAuth");
-const { register, login } = require("../controllers/FacAuthController");
+const facauthenticate = require("../../middleware/faculAuth");
+const {
+  register,
+  login,
+} = require("../../controllers/beyondUserRouteController/FacAuthController");
 
 // Registration route
 router.post("/register", register);
