@@ -116,7 +116,13 @@ const login = async (req, res, next) => {
   }
 };
 
+const logout = (req, res) => {
+  // You can simply clear the token from the client-side, as JWT tokens will become invalid once they expire
+  res.status(200).json({ message: "Logged out successfully" });
+};
+
 module.exports = {
   register,
   login,
+  logout,
 };

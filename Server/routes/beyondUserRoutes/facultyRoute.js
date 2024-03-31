@@ -4,6 +4,7 @@ const facauthenticate = require("../../middleware/faculAuth");
 const {
   register,
   login,
+  logout,
 } = require("../../controllers/beyondUserRouteController/FacAuthController");
 
 // Registration route
@@ -11,7 +12,7 @@ router.post("/register", register);
 
 // Login route
 router.post("/login", login);
-
+router.post("/logout", logout);
 // Profile route
 router.get("/profile", facauthenticate(), (req, res) => {
   const { role } = req.user;
