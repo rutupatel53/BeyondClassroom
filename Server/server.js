@@ -22,6 +22,7 @@ const editProblemRoute = require("./routes/adminRoutes/editProblemRoute");
 const softwareRoutes = require("./routes/projectRoutes/softwareRoute");
 const hardwareRoutes = require("./routes/projectRoutes/hardwareRoute");
 const userRoute = require("./routes/beyondUserRoutes/userRout");
+const alluserRoute = require("./routes/beyondUserRoutes/getUserRoute");
 const facultyRoute = require("./routes/beyondUserRoutes/facultyRoute");
 
 // //app
@@ -63,6 +64,7 @@ app.use((req, res, next) => {
 app.use("/api/software", softwareRoutes);
 app.use("/api/hardware", hardwareRoutes); //
 app.use("/user", userRoute); //
+app.use("/all", alluserRoute);
 app.use("/faculty", facultyRoute); //
 
 app.use("/api", getUserRoute);
