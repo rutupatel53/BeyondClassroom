@@ -24,7 +24,7 @@ const hardwareRoutes = require("./routes/projectRoutes/hardwareRoute");
 const userRoute = require("./routes/beyondUserRoutes/userRout");
 const alluserRoute = require("./routes/beyondUserRoutes/getUserRoute");
 const facultyRoute = require("./routes/beyondUserRoutes/facultyRoute");
-
+const eventRoute = require("./routes/eventRoutes/eventRoute");
 // //app
 const app = express();
 // //db
@@ -67,7 +67,8 @@ app.use("/user", userRoute); //
 app.use("/all", alluserRoute);
 app.use("/faculty", facultyRoute); //
 
-app.use("/api", getUserRoute);
+app.use("/add", eventRoute); //
+app.use("/api", getUserRoute); //
 // app.use("/api", signupRoute);
 // app.use("/api", loginRoute);
 app.use("/api", getAllProblemsRoute); //

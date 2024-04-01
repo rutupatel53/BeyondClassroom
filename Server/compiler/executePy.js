@@ -8,12 +8,12 @@ if (!fs.existsSync(playgroundPath)) {
   fs.mkdirSync(playgroundPath, { recursive: true });
 }
 
-const executePy = (filepath, inputData) => {
+const executeCpp = (filepath, inputData) => {
   const jobId = path.basename(filepath).split(".")[0];
   const outPath = path.join(playgroundPath, `${jobId}.out`);
   const inputPath = path.join(playgroundPath, `${jobId}.txt`);
 
-  const command = `touch ${inputPath} && echo "${inputData}" > ${inputPath} && python ${filepath} < ${inputPath}`;
+  const command = `touch ${inputPath} && echo "${inputData}" > ${inputPath} && g++ ${filepath} -o ${outPath} && ${outPath} < ${inputPath}`;
 
   return new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
@@ -24,4 +24,4 @@ const executePy = (filepath, inputData) => {
   });
 };
 
-module.exports = executePy;
+module.exports = executeCpp;
