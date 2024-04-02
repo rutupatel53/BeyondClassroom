@@ -19,6 +19,7 @@ const leaderBoardRoute = require("./routes/userRoutes/leaderBoardRoute");
 // Import admin routes
 const addProblemRoute = require("./routes/adminRoutes/addProblemRoute");
 const editProblemRoute = require("./routes/adminRoutes/editProblemRoute");
+const projectAddRoutes = require("./routes/adminRoutes/projectaddRoute"); //////////
 const softwareRoutes = require("./routes/projectRoutes/softwareRoute");
 const hardwareRoutes = require("./routes/projectRoutes/hardwareRoute");
 const userRoute = require("./routes/beyondUserRoutes/userRout");
@@ -66,7 +67,7 @@ app.use("/api/hardware", hardwareRoutes); //
 app.use("/user", userRoute); //
 app.use("/all", alluserRoute);
 app.use("/faculty", facultyRoute); //
-
+app.use("/project", projectAddRoutes); ///////////
 app.use("/add", eventRoute); //
 app.use("/api", getUserRoute); //
 // app.use("/api", signupRoute);
