@@ -1,0 +1,34 @@
+.Sidebar {
+  width: 250px; /* Sidebar width */
+  background-color: #ffffff; /* Sidebar background color */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+.Sidebar.active {
+  transform: translateX(0); /* Show sidebar when active */
+}
+
+.menu-toggle {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dashboard-title {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.Box {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0;
+}
+
+.Box li {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.Box li:hover {
+  background-color: #f0f0f0; /* Hover background color */
+}

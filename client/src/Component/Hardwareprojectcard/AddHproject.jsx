@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Input, Button, Form, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import axios from "axios";
+import Navbar from "../Navbar/Navbar";
 
 const { TextArea } = Input;
 
@@ -11,17 +12,25 @@ const AddHProjectForm = ({ onAddProject }) => {
 
   const handleSubmit = async (values) => {
     try {
+      const token = localStorage.getItem("token"); // Get JWT token from localStorage
       const formData = new FormData();
       formData.append("title", values.name);
       formData.append("description", values.description);
       formData.append("link", values.link);
       formData.append("image", values.image[0].originFileObj);
 
-      const response = await axios.post("api/hardware/Hstore", formData, {
+      const config = {
         headers: {
           "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`, // Set Authorization header with JWT token
         },
-      });
+      };
+
+      const response = await axios.post(
+        "http://localhost:5000/api/hardware/store",
+        formData,
+        config
+      );
 
       if (response && response.status === 200) {
         message.success("Project added successfully!");
@@ -62,50 +71,53 @@ const AddHProjectForm = ({ onAddProject }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md mt-6">
-      <h1 className="text-xl font-semibold mb-4">Add New Project</h1>
-      <Form form={form} onFinish={handleSubmit} layout="vertical">
-        <Form.Item
-          name="name"
-          label="Project Name"
-          rules={[{ required: true, message: "Please enter project name" }]}
-        >
-          <Input placeholder="Project Name" />
-        </Form.Item>
-        <Form.Item
-          name="description"
-          label="Description"
-          rules={[{ required: true, message: "Please enter description" }]}
-        >
-          <TextArea rows={4} placeholder="Description" />
-        </Form.Item>
-        <Form.Item
-          name="image"
-          label="Upload Image"
-          rules={[{ required: true, message: "Please upload an image" }]}
-          valuePropName="fileList"
-          getValueFromEvent={(e) => e.fileList}
-        >
-          <Upload {...uploadProps} listType="picture">
-            <Button icon={<UploadOutlined />} loading={uploading}>
-              Click to upload
-            </Button>
-          </Upload>
-        </Form.Item>
-        <Form.Item name="link" label="Project Link">
-          <Input placeholder="Project Link" />
-        </Form.Item>
-        <Form.Item>
-          <Button
-            htmlType="submit"
-            className="bg-blue-400 border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
-            loading={uploading}
+    <>
+      <Navbar />
+      <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md mt-6">
+        <h1 className="text-xl font-semibold mb-4">Add New Project</h1>
+        <Form form={form} onFinish={handleSubmit} layout="vertical">
+          <Form.Item
+            name="name"
+            label="Project Name"
+            rules={[{ required: true, message: "Please enter project name" }]}
           >
-            Add Project
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+            <Input placeholder="Project Name" />
+          </Form.Item>
+          <Form.Item
+            name="description"
+            label="Description"
+            rules={[{ required: true, message: "Please enter description" }]}
+          >
+            <TextArea rows={4} placeholder="Description" />
+          </Form.Item>
+          <Form.Item
+            name="image"
+            label="Upload Image"
+            rules={[{ required: true, message: "Please upload an image" }]}
+            valuePropName="fileList"
+            getValueFromEvent={(e) => e.fileList}
+          >
+            <Upload {...uploadProps} listType="picture">
+              <Button icon={<UploadOutlined />} loading={uploading}>
+                Click to upload
+              </Button>
+            </Upload>
+          </Form.Item>
+          <Form.Item name="link" label="Project Link">
+            <Input placeholder="Project Link" />
+          </Form.Item>
+          <Form.Item>
+            <Button
+              htmlType="submit"
+              className="bg-blue-400 border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
+              loading={uploading}
+            >
+              Add Project
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+    </>
   );
 };
 

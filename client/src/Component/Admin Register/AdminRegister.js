@@ -22,7 +22,10 @@ const AdminRegister = () => {
   const handleRegister = async (values) => {
     setLoading(true);
     try {
-      const response = await axios.post("fac/register", values); // Provide full URL
+      const response = await axios.post(
+        "http://localhost:5000/faculty/register",
+        values
+      ); // Provide full URL
       if (response && response.status === 201) {
         message.success("Registration successful. Please login.");
         navigate("/Adminlogin", { replace: true });

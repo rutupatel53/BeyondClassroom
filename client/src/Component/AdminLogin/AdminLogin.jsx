@@ -1,94 +1,55 @@
-import React, { useState, useEffect } from "react";
-import { Form, Input, Button, Spin } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../Navbar/Navbar";
 
-const AdminLogin = ({ setUserState }) => {
-  const [loading, setLoading] = useState(false);
+const Login = () => {
   const navigate = useNavigate();
-  const [form] = Form.useForm();
-  const [formErrors, setFormErrors] = useState({});
+
+  // State variables
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [user, setUserDetails] = useState({
-    username: "",
-    password: "",
-  });
 
-  const changeHandler = (changedValues) => {
-    setUserDetails({
-      ...user,
-      ...changedValues,
-    });
-  };
-
-  const onFinish = async () => {
-    // Handle the form submission logic here if needed
-  };
-
-  const validateForm = (values) => {
-    const error = {};
-
-    if (!values.username) {
-      error.username = "Username is required";
-    }
-
-    if (!values.password) {
-      error.password = "Password is required";
-    }
-
-    return error;
-  };
-
-  const loginHandler = async () => {
+  // Function to handle form submission
+  const handleLogin = async () => {
+    setLoading(true);
     try {
-      const errors = validateForm(user);
-      setFormErrors(errors);
-
-      if (Object.keys(errors).length === 0) {
-        setLoading(true);
-        const response = await axios.post(`fac/login`, user, {
-          withCredentials: true,
-        });
-        navigate("/");
-        setLoading(false);
-
-        localStorage.setItem("token", response?.data?.token);
-        setUserState(response?.data?.User);
-      }
-    } catch (err) {
-      setLoading(false);
-      if (err.response && err.response.data) {
-        setError(err.response.data.message);
+      const response = await axios.post("http://localhost:5000/faculty/login", {
+        username,
+        password,
+      });
+      if (response && response.data && response.data.token) {
+        console.log("Login successful");
+        // Store the token in local storage
+        localStorage.setItem("token", response.data.token);
+        navigate("/adminpanel", { replace: true });
       } else {
-        setError("An error occurred during login. Please try again.");
+        throw new Error("Invalid response from server");
       }
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("An error occurred during login");
     }
+    setLoading(false);
   };
-
-  useEffect(() => {
-    form.setFieldsValue({
-      username: "",
-      password: "",
-    });
-  }, [formErrors]);
 
   return (
     <>
-      <section className="bg-white">
-        <div className="flex flex-col items-center justify-center w-full sm:w-auto ml-0 md:w-auto mb-24 mt-10 mx-auto h-fit ">
+      <Navbar />
+      <section className="bg-gray-50">
+        <div className="flex flex-col items-center justify-center w-full  sm:w-auto ml-0  md:w-auto mb-24 mt-10 mx-auto h-fit ">
           <div className="bg-white border-2 border-gray-300 shadow-md rounded p-4 text-center">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <Spin spinning={loading} tip="Logging You In.... Please Wait." />
-              <Form
-                form={form}
-                name="loginForm"
-                onFinish={onFinish}
-                onValuesChange={changeHandler}
-              >
-                <h1 className="text-xl font-bold mb-4 leading-tight tracking-tight text-black md:text-2xl">
-                  Login As Admin
-                </h1>
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-black">
+                Sign in to your account
+              </h1>
+
+              <Form name="loginForm" className="space-y-4 md:space-y-6">
                 <Form.Item
                   name="username"
                   rules={[{ required: true, message: "Username is required" }]}
@@ -97,6 +58,8 @@ const AdminLogin = ({ setUserState }) => {
                     prefix={<UserOutlined />}
                     placeholder="Username"
                     className="rounded-lg"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)} // Update username state
                   />
                 </Form.Item>
                 <Form.Item
@@ -107,17 +70,38 @@ const AdminLogin = ({ setUserState }) => {
                     prefix={<LockOutlined />}
                     placeholder="••••••••"
                     className="rounded-lg"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} // Update password state
                   />
                 </Form.Item>
-                <Button type="primary" htmlType="submit" onClick={loginHandler}>
-                  Login
-                </Button>
-                {error && <p className="text-red-500">{error}</p>}
-                <p className="text-sm font-light text-gray-500">
+                <Form.Item>
+                  <Form.Item name="remember" valuePropName="checked" noStyle>
+                    <Checkbox>Remember me</Checkbox>
+                  </Form.Item>
+                  <a
+                    href="#"
+                    className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >
+                    Forgot password?
+                  </a>
+                </Form.Item>
+                <Form.Item>
+                  <Button
+                    className="bg-green-500 w-44 h-16 border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
+                    type="primary"
+                    loading={loading}
+                    onClick={handleLogin} // Call handleLogin on button click
+                  >
+                    Log in
+                  </Button>
+                </Form.Item>
+                {error && <p className="text-red-500">{error}</p>}{" "}
+                {/* Display error message if present */}
+                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
                   <NavLink
-                    to="/AdminRegister"
-                    className="font-medium text-primary-600 hover:underline"
+                    to="/signup"
+                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Sign up
                   </NavLink>
@@ -131,4 +115,4 @@ const AdminLogin = ({ setUserState }) => {
   );
 };
 
-export default AdminLogin;
+export default Login;

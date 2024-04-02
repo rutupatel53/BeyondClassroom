@@ -3,6 +3,7 @@ import { AutoComplete } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ProjectCard from "../Component/Hardwareprojectcard/Sprojectcard";
+import Navbar from "../Component/Navbar/Navbar";
 
 const Hardware = () => {
   const [projects, setProjects] = useState([]);
@@ -18,7 +19,18 @@ const Hardware = () => {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get("api/hardware");
+      const token = localStorage.getItem("token"); // Get JWT token from localStorage
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Set Authorization header with JWT token
+        },
+      };
+
+      const response = await axios.get(
+        "http://localhost:5000/api/hardware/",
+        config
+      );
+
       if (response && response.data && Array.isArray(response.data.response)) {
         setProjects(response.data.response);
         setFilteredProjects(response.data.response);
@@ -67,36 +79,39 @@ const Hardware = () => {
   };
 
   return (
-    <div className="container mx-auto my-8">
-      <h1 className="text-3xl font-semibold mb-4">Hardware Projects</h1>
-      <AutoComplete
-        ref={inputRef}
-        value={searchValue}
-        style={{ width: "40%" }}
-        className="mb-4"
-        options={searchSuggestions.map((value) => ({
-          value,
-          label: value,
-        }))}
-        onSelect={handleSelect}
-        onSearch={handleSearchSuggestions}
-        onChange={handleSearch}
-        onKeyDown={handleEnterPress}
-        placeholder="Search projects"
-        allowClear
-        size="large"
-      />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredProjects.map((project) => (
-          <ProjectCard key={project._id} project={project} />
-        ))}
+    <>
+      <Navbar />
+      <div className="container mx-auto my-8">
+        <h1 className="text-3xl font-semibold mb-4">Hardware Projects</h1>
+        <AutoComplete
+          ref={inputRef}
+          value={searchValue}
+          style={{ width: "40%" }}
+          className="mb-4"
+          options={searchSuggestions.map((value) => ({
+            value,
+            label: value,
+          }))}
+          onSelect={handleSelect}
+          onSearch={handleSearchSuggestions}
+          onChange={handleSearch}
+          onKeyDown={handleEnterPress}
+          placeholder="Search projects"
+          allowClear
+          size="large"
+        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredProjects.map((project) => (
+            <ProjectCard key={project._id} project={project} />
+          ))}
+        </div>
+        <div className="ml-4">
+          <button className="bg-green-500 w-80 h-16 text-white font-semibold py-2 px-6 hover:bg-green-600 rounded-full">
+            <Link to={"/addhardwareproject"}>Add New Project</Link>
+          </button>
+        </div>
       </div>
-      <div className="ml-4">
-        <button className="bg-green-500 w-80 h-16 text-white font-semibold py-2 px-6 hover:bg-green-600 rounded-full">
-          <Link to={"/addhardwareproject"}>Add New Project</Link>
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 

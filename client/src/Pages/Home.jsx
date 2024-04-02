@@ -5,6 +5,7 @@ import Footer from "../Component/Footer/footer";
 import { Event } from "../Component/Event/Event";
 import AnnouncementList from "../Component/AdminPanel/AnnouncementList";
 import web from "../Assets/web.png";
+import Navbar from "../Component/Navbar/Navbar";
 export const Home = () => {
   const [data, setData] = useState("hii");
   const [announcements, setAnnouncements] = useState([]);
@@ -25,6 +26,7 @@ export const Home = () => {
   }, []);
   return (
     <div>
+      <Navbar />
       {/* <h1>{data}</h1>Home */}
       <div>
         <div className="relative isolate px-6 pt-14 lg:px-8 pl-60 h-[500px] text-left flex flex-row-reverse items-center bg-pink-50">
@@ -139,6 +141,7 @@ export const Home = () => {
       <div>
         <Event />
       </div>
+      <Footer />
     </div>
   );
 };

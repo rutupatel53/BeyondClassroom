@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Component/Login/Login";
-import Navbar from "./Component/Navbar/Navbar";
+// import Navbar from "./Component/Navbar/Navbar";
 import Register from "./Component/Register/Register";
 import OTPVerification from "./Component/Register/OTPVerification";
 import { Home } from "./Pages/Home";
@@ -13,16 +13,17 @@ import AddProjectForm from "./Component/softwareprojectcard/Addproject";
 import CoursesSlider from "./Component/CourseCardItem/CourseCarditem";
 import AdminLogin from "./Component/AdminLogin/AdminLogin";
 import RecommendationForm from "./Component/Recommendation Form/RecommendationForm";
-import Footer from "./Component/Footer/footer";
+// import Footer from "./Component/Footer/footer";
 import { Event } from "./Component/Event/Event";
 import AdminPanel from "./Component/AdminPanel/AdminPanel";
 import AdminRegister from "./Component/Admin Register/AdminRegister";
 import AddHProjectForm from "./Component/Hardwareprojectcard/AddHproject";
+import AddProblem from "./Component/AdminPanel/AddProblem";
+import ShowProblem from "./Component/ShowProblem/ShowProblem";
 // import AbstractBackground from "./Component/AbstractBg/AbstractBg";
 function App() {
   return (
     <Router>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Courses" element={<Courses />} />
@@ -37,16 +38,17 @@ function App() {
         <Route path="/courseslide" element={<CoursesSlider />} />
         <Route path="/Adminlogin" element={<AdminLogin />}></Route>
         <Route path="/AdminRegister" element={<AdminRegister />}></Route>
+        <Route path="/adminpanel" element={<AdminPanel />}></Route>
+        <Route path="/addproblem" element={<AddProblem />}></Route>
+        <Route path="/showproblem" element={<ShowProblem />}></Route>
         <Route
           path="RecommendationForm"
           element={<RecommendationForm />}
         ></Route>
-        <Route Component={<Footer />}></Route>
         <Route Component={<Event />}></Route>
-        <Route path="/adminpanel" element={<AdminPanel />}></Route>
         {/* <Route Component={<AbstractBackground />}></Route> */}
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

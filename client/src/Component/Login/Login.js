@@ -3,8 +3,8 @@ import { Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-import axios from "axios"; // Import Axios
+import axios from "axios";
+import Navbar from "../Navbar/Navbar";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,13 +19,15 @@ const Login = () => {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("/api/login", {
+      const response = await axios.post("http://localhost:5000/user/login", {
         username,
         password,
       });
-      if (response && response.data) {
-        console.log("Login successful:", response.data);
-        navigate("/", { replace: true }); // Corrected function name to navigate
+      if (response && response.data && response.data.token) {
+        console.log("Login successful");
+        // Store the token in local storage
+        localStorage.setItem("token", response.data.token);
+        navigate("/", { replace: true });
       } else {
         throw new Error("Invalid response from server");
       }
@@ -38,6 +40,7 @@ const Login = () => {
 
   return (
     <>
+      <Navbar />
       <section className="bg-gray-50">
         <div className="flex flex-col items-center justify-center w-full  sm:w-auto ml-0  md:w-auto mb-24 mt-10 mx-auto h-fit ">
           <div className="bg-white border-2 border-gray-300 shadow-md rounded p-4 text-center">
