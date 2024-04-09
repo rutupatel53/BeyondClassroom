@@ -34,10 +34,10 @@ export const Practice = () => {
         {tabs.map((tab, index) => (
           <div
             key={index}
-            className={`cursor-pointer text-center text-white w-36 ml-5 gap-2 py-2 rounded-md transition duration-300 ${
+            className={`cursor-pointer text-center w-36 ml-5 gap-2 py-2 rounded-md transition duration-300 ${
               activeTab === index
-                ? "bg-gradient-to-br from-green-500 to-green-500   shadow-md"
-                : "bg-white text-gray-400 hover:bg-white border border-green-500"
+                ? "bg-gradient-to-br text-white from-green-500 to-green-500   shadow-md"
+                : "bg-gray text-gray-400 hover:bg-white border border-green-500"
             }`}
             onClick={() => handleTabClick(index)}
           >

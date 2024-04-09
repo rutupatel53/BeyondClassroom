@@ -30,34 +30,24 @@ const LeftMenu = ({ mode }) => {
         AddProblem
       </Menu.Item>
       <Menu.Item
-        key="Practice"
+        key="AddEvent"
         onClick={() => {
-          setMenu("Practice");
-          navigate("/practice");
+          setMenu("AddEvent");
+          navigate("/AddEvent");
         }}
       >
-        Practice
+        AddEvent
       </Menu.Item>
-      <Menu.SubMenu key="Projects" title="projects">
-        <Menu.Item
-          key="Software"
-          onClick={() => {
-            setMenu("Software");
-            navigate("/Software");
-          }}
-        >
-          Software
-        </Menu.Item>
-        <Menu.Item
-          key="Hardware"
-          onClick={() => {
-            setMenu("Hardware");
-            navigate("/Hardware");
-          }}
-        >
-          Hardware
-        </Menu.Item>
-      </Menu.SubMenu>
+      <Menu.Item
+        className="w-28"
+        key="AssignProject"
+        onClick={() => {
+          setMenu("AssignProject");
+          navigate("/AssignProject");
+        }}
+      >
+        AssignProject
+      </Menu.Item>
     </Menu>
   );
 };

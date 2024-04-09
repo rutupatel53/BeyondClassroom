@@ -20,6 +20,8 @@ import AdminRegister from "./Component/Admin Register/AdminRegister";
 import AddHProjectForm from "./Component/Hardwareprojectcard/AddHproject";
 import AddProblem from "./Component/AdminPanel/AddProblem";
 import ShowProblem from "./Component/ShowProblem/ShowProblem";
+import { AddEvent } from "./Component/AdminPanel/AddEvent";
+import AssignProject from "./Component/AdminPanel/AssignProject";
 // import AbstractBackground from "./Component/AbstractBg/AbstractBg";
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
         <Route path="/AdminRegister" element={<AdminRegister />}></Route>
         <Route path="/adminpanel" element={<AdminPanel />}></Route>
         <Route path="/addproblem" element={<AddProblem />}></Route>
+        <Route path="/addevent" element={<AddEvent />}></Route>
+        <Route path="/assignproject" element={<AssignProject />}></Route>
         <Route path="/showproblem" element={<ShowProblem />}></Route>
         <Route
           path="RecommendationForm"

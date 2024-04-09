@@ -6,6 +6,7 @@ import { Event } from "../Component/Event/Event";
 import AnnouncementList from "../Component/AdminPanel/AnnouncementList";
 import web from "../Assets/web.png";
 import Navbar from "../Component/Navbar/Navbar";
+import AssignedProjects from "../Component/AssignedProjects";
 export const Home = () => {
   const [data, setData] = useState("hii");
   const [announcements, setAnnouncements] = useState([]);
@@ -137,6 +138,9 @@ export const Home = () => {
             </div>
           </section>
         </div>
+      </div>
+      <div>
+        <AssignedProjects />
       </div>
       <div>
         <Event />

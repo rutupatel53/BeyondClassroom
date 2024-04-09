@@ -83,11 +83,13 @@ const Software = () => {
       {" "}
       <Navbar />
       <div className="container mx-auto my-8">
-        <h1 className="text-3xl font-semibold mb-4">Software Projects</h1>
+        <h1 className="text-3xl font-semibold mb-4 text-center">
+          Software Projects
+        </h1>
         <AutoComplete
           ref={inputRef}
           value={searchValue}
-          style={{ width: "40%" }}
+          style={{ width: "40%", marginLeft: "500px" }}
           className="mb-4"
           options={searchSuggestions.map((value) => ({
             value,

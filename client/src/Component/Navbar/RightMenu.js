@@ -30,12 +30,23 @@ const RightMenu = ({ mode }) => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setLoggedIn(false);
-    setUsername("");
-    navigate("/login");
-    message.success("Logged out successfully");
+  const handleLogout = async () => {
+    try {
+      // const token = localStorage.getItem("token");
+      // await axios.post("http://localhost:5000/user/logout", null, {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // });
+      // localStorage.removeItem("token");
+      setLoggedIn(false);
+      setUsername("");
+      navigate("/login");
+      message.success("Logged out successfully");
+    } catch (error) {
+      console.error("Failed to logout:", error);
+      message.error("Failed to logout");
+    }
   };
 
   return (
