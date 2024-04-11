@@ -1,0 +1,53 @@
+const coursesData = [
+  {
+    id: 1,
+    title: "Full Stack Web Development 0 To 100 Crash Course",
+    image: "https://unsplash.com/photos/FHnnjk1Yj7Y/download",
+    description:
+      "Description for Full Stack Web Development 0 To 100 Crash Course",
+    link: "#",
+    category: "category1",
+    actualPrice: 500,
+    discountPrice: 400,
+    rating: 4.5,
+    students: 120,
+  },
+  {
+    id: 2,
+    title: "Course 1",
+    image: "https://unsplash.com/photos/FHnnjk1Yj7Y/download",
+    description: "Description for Course 1.",
+    link: "#",
+    category: "category2",
+    actualPrice: 300,
+    discountPrice: 250,
+    rating: 4.0,
+    students: 80,
+  },
+  {
+    id: 3,
+    title: "Course 2",
+    image: "course2.jpg",
+    description: "Description for Course 2.",
+    link: "#",
+    category: "category2",
+    actualPrice: 450,
+    discountPrice: 380,
+    rating: 4.2,
+    students: 90,
+  },
+  {
+    id: 4,
+    title: "Course 3",
+    image: "course3.jpg",
+    description: "Description for Course 3.",
+    link: "#",
+    category: "category1",
+    actualPrice: 550,
+    discountPrice: 500,
+    rating: 4.8,
+    students: 150,
+  },
+];
+
+export default coursesData;

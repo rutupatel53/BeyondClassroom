@@ -70,7 +70,7 @@ export const Courses = () => {
                 </div>
               </div>
             </div>
-            <div className="md:w-1/3 mt-8 mr-52 md:mt-0">
+              <div className="md:w-1/3 mt-8 mr-52 md:mt-0">
               <img
                 src={course_right}
                 alt="Hero img"

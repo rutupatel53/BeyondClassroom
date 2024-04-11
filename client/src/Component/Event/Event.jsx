@@ -44,13 +44,23 @@ export const Event = () => {
   };
 
   return (
-    <section className="py-12 bg-white">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-6 text-center">Upcoming Events</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {renderUpcomingEvents()}
-        </div>
+    <>
+      <div className="bg-[#92C7CF] pt-15">
+        <section className="py-12 ">
+          <div className="container mx-auto">
+            <h2 className="text-5xl font-bold mb-6 text-center text-[#FD661F]">
+              Upcoming Events
+            </h2>
+            <p className="text-center text-sm text-custom text-gray-500 mt-5">
+              This Are The Events Which Will be Held In Our College In Upcoming
+              Day's
+            </p>
+            <div className="grid grid-cols-1 mt-5 ml-5 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {renderUpcomingEvents()}
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
+    </>
   );
 };
