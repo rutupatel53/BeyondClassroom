@@ -20,7 +20,7 @@ export const Courses = () => {
     slidesToShow: 3, // Display 3 slides at a time
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 1024,
@@ -40,37 +40,37 @@ export const Courses = () => {
     <>
       {" "}
       <Navbar />
-      <div id="hero" className="bg-white relative  md:py-16">
+      <div id="hero" className="bg-white relative md:py-16 overflow-x-hidden">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-2/3 md:pr-8">
+            <div className="w-[320px] md:w-2/3 md:pr-8">
               <div className="text-left font-custom ">
-                <h1 className="text-7xl font-bold ml-60 mb-6">
+                <h1 className="text-2xl ml-5 mt-10 md:text-7xl font-bold md:ml-60 mb-6">
                   <span className="text-green-700 font-custom">Improve</span>
-                  <span className="font-custom ml-5">your Skill</span>
-                  <img src={curve} className="h-6 "></img>
+                  <span className=" font-custom ml-5">your Skill</span>
+                  <img src={curve} className="h-4  md:h-6 md:ml-0 "></img>
                 </h1>
-                <h1 className="text-6xl font-bold ml-60   mb-6">
+                <h1 className="text-2xl ml-5 md:text-6xl font-bold md:ml-60 mb-6">
                   With Different Way
                 </h1>
-                <p className="text-gray-500 text-xl ml-64 mt-4">
+                <p className="text-gray-500 text-sm ml-5 md:text-xl md:ml-64 mt-4">
                   Let's take an online course to improve your skills in a
                   different way, <br />
                   you can set your own study time according to your learning
                   speed. <br />
                   So you san study comfortable and absorb tge material easily.
                 </p>
-                <div className="mt-6 ml-60">
+                <div className="mt-6 ml-8 md:ml-60 md:flex">
                   <button className="bg-green-700 w-52 h-16 mr-6 border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 rounded-[25PX] transform transition duration-300 hover:-translate-y-1 hover:shadow-md">
                     Get Started
                   </button>
-                  <button className="bg-green-700 mr-6 w-52 h-16  border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 rounded-[25PX] transform transition duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <button className="bg-green-700 mr-6 mt-10 md:mt-0 w-52 h-16  border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 rounded-[25PX] transform transition duration-300 hover:-translate-y-1 hover:shadow-md">
                     Watch Video
                   </button>
                 </div>
               </div>
             </div>
-              <div className="md:w-1/3 mt-8 mr-52 md:mt-0">
+            <div className="md:w-1/3 mt-8 md:mr-52 md:mt-0">
               <img
                 src={course_right}
                 alt="Hero img"
@@ -82,8 +82,10 @@ export const Courses = () => {
           {/*Courses*/}
           <div id="courses">
             <div className=" bg-gray-200">
-              <h1 className="text-green-700 text-6xl text-center ">Courses</h1>
-              <p className="text-center text-gray-500 mt-9">
+              <h1 className="text-green-700 text-6xl text-center font-custom pt-2 ">
+                Courses
+              </h1>
+              <p className="text-center text-gray-500 md:text-xl mt-9">
                 This Are The Courses Which Are Suggested From Faculty And The
                 Seniors!
               </p>
@@ -132,10 +134,10 @@ export const Courses = () => {
         </div>
         <div>
           {" "}
-          <h1 className="text-green-700 text-6xl text-center mt-9">
+          <h1 className="text-green-700 text-3xl font-custom md:text-6xl text-center mt-9">
             Steps To Learn Fastly
           </h1>
-          <p className="text-center text-gray-500 mt-9">
+          <p className="text-center text-xs md:text-xl text-gray-500 mt-9">
             This Are The Courses With Steps Which You can Follow
           </p>
           <div className="flex flex-wrap justify-center mt-8 gap-1">

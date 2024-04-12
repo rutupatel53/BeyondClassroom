@@ -45,7 +45,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-full md:w-full">
       <Navbar />
       {/* <h1>{data}</h1>Home */}
       <LandingPage />
@@ -87,7 +87,7 @@ export const Home = () => {
 
         <div>
           <div>
-            <h1 className="mt-14 text-center text-5xl font-bold text-[#FD661F] text-custom">
+            <h1 className="mt-14 text-center text-3xl md:text-5xl font-bold text-[#FD661F] text-custom">
               Latest Announcement
             </h1>
           </div>
@@ -101,11 +101,14 @@ export const Home = () => {
           {/* Render courses based on selected category */}
           <section className="py-12 bg-gray-100">
             <div className="container mx-auto">
-              <h2 className="text-5xl font-bold mb-6 text-center text-[#FD661F]">
+              <h1 className="mt-14 text-center text-3xl md:text-5xl font-bold text-[#FD661F] text-custom">
                 Popular Courses
-                <img src={curve} className="h-8  ml-[670px]"></img>
-              </h2>
-              <div className="flex justify-center space-x-4 mt-8">
+                <img
+                  src={curve}
+                  className="h-5 ml-24 md:h-8  md:ml-[670px]"
+                ></img>
+              </h1>
+              <div className="flex justify-center space-x-2 mt-8">
                 {["all", ...categories].map((category) => (
                   <div
                     key={category}
@@ -121,7 +124,7 @@ export const Home = () => {
                 ))}
               </div>
 
-              <div className="grid mt-5  grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4 ml-2 w-[1500px] h-[428px]">
+              <div className="grid mt-5 grid-cols-1 w-[300px] h-max  md:grid-cols-2 md:w-[1500px] md:h-[428px]  lg:grid-cols-4 gap-4 ml-2 w-[1500px] h-[428px]">
                 {filteredCourses.map((course) => (
                   <div
                     key={course.id}
@@ -133,7 +136,7 @@ export const Home = () => {
                         alt={course.title}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute bottom-2 right-2 z-10">
+                      <div className="absolute bottom-2 right-2 ">
                         <span className="bg-[#FD661F] text-white px-2 py-1 rounded-full text-xs font-semibold">
                           +{course.students} students Enrolled
                         </span>
@@ -151,8 +154,8 @@ export const Home = () => {
                       <p className="text-gray-800 text-custom text-sm mt-5 mb-4">
                         {course.description}
                       </p>
-                      <div>
-                        <div className="absolute bottom-10 left-2 z-10 text-black">
+                      <div className="mt-24">
+                        <div className="absolute bottom-10 left-2  text-black">
                           <div className="flex items-center ml-5">
                             <span className="font-semibold text-2xl text-[#FD661F]">
                               ${course.discountPrice}

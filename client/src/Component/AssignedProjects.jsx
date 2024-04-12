@@ -34,10 +34,11 @@ const AssignedProjects = () => {
     <>
       <div className="bg-[#92C7CF]">
         <div>
-          <h1 className="text-5xl font-bold  pt-5 text-custom text-center text-[#FD661F]">
+          <h1 className="pt-5 text-center text-3xl md:text-5xl font-bold text-[#FD661F] text-custom">
+            {/* <h1 className="text-5xl font-bold  pt-5 text-custom text-center text-[#FD661F]"> */}
             Challenges By Faculty
           </h1>
-          <p className="text-center text-sm text-custom text-gray-500 mt-5">
+          <p className="text-center text-xs md:text-sm text-custom text-gray-500 mt-5">
             Accept The Challenge In your Favourite Technology And Earn The
             Credits.
           </p>

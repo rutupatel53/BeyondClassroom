@@ -29,7 +29,7 @@ export const Event = () => {
     return upcomingEvents.map((event, index) => (
       <div
         key={index}
-        className="p-4 ml-1 gap-2 bg-gray-100 rounded-md shadow-md"
+        className="p-4  mr-4 md:mr-0 gap-2 bg-gray-100 rounded-md shadow-md"
       >
         <h3 className="text-xl font-bold mb-2">{event.title}</h3>
         <p className="text-gray-600 mb-3">
@@ -48,10 +48,10 @@ export const Event = () => {
       <div className="bg-[#92C7CF] pt-15">
         <section className="py-12 ">
           <div className="container mx-auto">
-            <h2 className="text-5xl font-bold mb-6 text-center text-[#FD661F]">
+            <h1 className="pt-5 text-center text-3xl md:text-5xl font-bold text-[#FD661F] text-custom">
               Upcoming Events
-            </h2>
-            <p className="text-center text-sm text-custom text-gray-500 mt-5">
+            </h1>
+            <p className="text-center text-xs md:text-sm text-custom text-gray-500 mt-5">
               This Are The Events Which Will be Held In Our College In Upcoming
               Day's
             </p>

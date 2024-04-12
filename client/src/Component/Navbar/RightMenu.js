@@ -9,26 +9,26 @@ const RightMenu = ({ mode }) => {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setLoggedIn(true);
-      fetchUsername(token);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     setLoggedIn(true);
+  //     fetchUsername(token);
+  //   }
+  // }, []);
 
-  const fetchUsername = async (token) => {
-    try {
-      const response = await axios.get("http://localhost:5000/user/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setUsername(response.data.username);
-    } catch (error) {
-      console.error("Failed to fetch username:", error);
-    }
-  };
+  // const fetchUsername = async (token) => {
+  //   try {
+  //     const response = await axios.get("http://localhost:5000/user/profile", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     setUsername(response.data.username);
+  //   } catch (error) {
+  //     console.error("Failed to fetch username:", error);
+  //   }
+  // };
 
   const handleLogout = async () => {
     try {
