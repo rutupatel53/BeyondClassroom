@@ -86,30 +86,34 @@ const Software = () => {
         <h1 className="text-3xl font-semibold mb-4 text-center">
           Software Projects
         </h1>
-        <AutoComplete
-          ref={inputRef}
-          value={searchValue}
-          style={{ width: "40%", marginLeft: "500px" }}
-          className="mb-4"
-          options={searchSuggestions.map((value) => ({
-            value,
-            label: value,
-          }))}
-          onSelect={handleSelect}
-          onSearch={handleSearchSuggestions}
-          onChange={handleSearch}
-          onKeyDown={handleEnterPress}
-          placeholder="Search projects"
-          allowClear
-          size="large"
-        />
+        <div className="flex items-center justify-center">
+          <AutoComplete
+            ref={inputRef}
+            value={searchValue}
+            style={{
+              width: "60%",
+            }}
+            className="mb-4 "
+            options={searchSuggestions.map((value) => ({
+              value,
+              label: value,
+            }))}
+            onSelect={handleSelect}
+            onSearch={handleSearchSuggestions}
+            onChange={handleSearch}
+            onKeyDown={handleEnterPress}
+            placeholder="Search projects"
+            allowClear
+            size="large"
+          />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredProjects.map((project) => (
             <ProjectCard key={project._id} project={project} />
           ))}
         </div>
-        <div className="ml-4">
-          <button className="bg-green-500 w-80 h-16 text-white font-semibold py-2 px-6 hover:bg-green-600 rounded-full">
+        <div className="ml-4 flex items-center justify-center mt-5">
+          <button className="bg-green-500 w-68 md:w-80 h-14 text-white font-semibold py-2 px-6 hover:bg-green-600 rounded-full">
             <Link to={"/addproject"}>Add New Project</Link>
           </button>
         </div>

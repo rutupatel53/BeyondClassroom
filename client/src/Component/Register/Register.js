@@ -95,7 +95,7 @@ const Register = () => {
               </Form.Item>
               <Form.Item>
                 <Button
-                  className="bg-green-500 w-44 h-16 border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
+                  className="bg-green-500  w-44 h-12 border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
                   type="primary"
                   loading={loading}
                   htmlType="submit"

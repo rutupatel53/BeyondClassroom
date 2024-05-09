@@ -40,9 +40,9 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
       <section className="bg-gray-50">
-        <div className="flex flex-col items-center justify-center w-full  sm:w-auto ml-0  md:w-auto mb-24 mt-10 mx-auto h-fit ">
+        <Navbar />
+        <div className="flex flex-col items-center justify-center w-full sm:w-auto ml-0 md:w-auto mb-24 mt-10 mx-auto h-fit">
           <div className="bg-white border-2 border-gray-300 shadow-md rounded p-4 text-center">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-black">
@@ -87,7 +87,7 @@ const Login = () => {
                 </Form.Item>
                 <Form.Item>
                   <Button
-                    className="bg-green-500 w-44 h-16 border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
+                    className="bg-green-500 w-44 h-12 border-gray-400 text-white ml-32 font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
                     type="primary"
                     loading={loading}
                     onClick={handleLogin} // Call handleLogin on button click

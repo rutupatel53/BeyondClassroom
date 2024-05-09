@@ -33,7 +33,7 @@ const AdminPanel = () => {
         />
 
         <button
-          className="bg-green-500 w-80 h-16 border-gray-400 text-white ml-32
+          className="bg-green-500 w-86 h-14 ml-24 md:w-80 h-16 border-gray-400 text-white ml-32
       font-semibold py-2 px-6 ml-4 hover:border-transparent rounded-full"
           onClick={handleAnnouncementSubmit}
         >
