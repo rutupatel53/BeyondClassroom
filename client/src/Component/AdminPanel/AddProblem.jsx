@@ -49,7 +49,7 @@ const AddProblem = () => {
     event.preventDefault();
     try {
       setLoader(true);
-      const ADD_PROBLEM_URL = `${process.env.BEYOND_API_BASEURL}/admin/problem`;
+      const ADD_PROBLEM_URL = `https://beyondclassroom.onrender.com/admin/problem`;
       const successMessage = await axios.post(ADD_PROBLEM_URL, data, {
         // headers: { Authorization: token },
       });

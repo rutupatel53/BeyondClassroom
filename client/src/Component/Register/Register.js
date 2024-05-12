@@ -18,7 +18,7 @@ const Register = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        `${process.env.BEYOND_API_BASEURL}/user/register`,
+        `https://beyondclassroom.onrender.com/user/register`,
         values
       );
       if (response && response.status === 201) {

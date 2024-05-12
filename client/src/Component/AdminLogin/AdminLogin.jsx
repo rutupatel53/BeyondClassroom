@@ -20,7 +20,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        `${process.env.BEYOND_API_BASEURL}/faculty/login`,
+        `https://beyondclassroom.onrender.com/faculty/login`,
         {
           username,
           password,

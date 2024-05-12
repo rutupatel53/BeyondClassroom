@@ -27,7 +27,7 @@ const AddHProjectForm = ({ onAddProject }) => {
       };
 
       const response = await axios.post(
-        `${process.env.BEYOND_API_BASEURL}/api/hardware/store`,
+        `https://beyondclassroom.onrender.com/api/hardware/store`,
         formData,
         config
       );

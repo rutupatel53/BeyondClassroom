@@ -30,7 +30,7 @@ const AssignProject = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `${process.env.BEYOND_API_BASEURL}/project/add`,
+        `https://beyondclassroom.onrender.com/project/add`,
         {
           method: "POST",
           headers: {

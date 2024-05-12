@@ -23,7 +23,7 @@ const AdminRegister = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        `${process.env.BEYOND_API_BASEURL}/faculty/register`,
+        `https://beyondclassroom.onrender.com/faculty/register`,
         values
       ); // Provide full URL
       if (response && response.status === 201) {

@@ -22,8 +22,10 @@ import AddProblem from "./Component/AdminPanel/AddProblem";
 import ShowProblem from "./Component/ShowProblem/ShowProblem";
 import { AddEvent } from "./Component/AdminPanel/AddEvent";
 import AssignProject from "./Component/AdminPanel/AssignProject";
+// import dotenv from "dotenv";
 // import AbstractBackground from "./Component/AbstractBg/AbstractBg";
 function App() {
+  // dotenv.config();
   return (
     <Router>
       <Routes>

@@ -11,7 +11,7 @@ export const Event = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `${process.env.BEYOND_API_BASEURL}/add/events`,
+        `https://beyondclassroom.onrender.com/add/events`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

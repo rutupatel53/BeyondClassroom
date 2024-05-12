@@ -27,7 +27,7 @@ const Hardware = () => {
       };
 
       const response = await axios.get(
-        "http://localhost:5000/api/hardware/",
+        `https://beyondclassroom.onrender.com/api/hardware/`,
         config
       );
 

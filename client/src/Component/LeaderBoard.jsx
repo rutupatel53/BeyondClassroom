@@ -59,7 +59,7 @@ const LeaderBoard = () => {
   const fetchData = async () => {
     try {
       setLoader(true);
-      const GET_ALL_PROBLEMS_URL = `${process.env.BEYOND_API_BASEURL}/api/leader-board`;
+      const GET_ALL_PROBLEMS_URL = `https://beyondclassroom.onrender.com/api/leader-board`;
       const res = await axios.get(GET_ALL_PROBLEMS_URL);
       if (res.status === 200) {
         setRows(res.data);

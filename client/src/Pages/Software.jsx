@@ -27,7 +27,7 @@ const Software = () => {
       };
 
       const response = await axios.get(
-        "http://localhost:5000/api/software/",
+        `https://beyondclassroom.onrender.com/api/software/`,
         config
       );
 

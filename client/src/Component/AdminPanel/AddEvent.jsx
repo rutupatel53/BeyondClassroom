@@ -25,7 +25,7 @@ export const AddEvent = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `${process.env.BEYOND_API_BASEURL}/add/events`,
+        `https://beyondclassroom.onrender.com/add/events`,
         {
           method: "POST",
           headers: {

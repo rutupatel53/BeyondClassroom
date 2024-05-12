@@ -13,7 +13,7 @@ const AssignedProjects = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `${process.env.BEYOND_API_BASEURL}/project/get`,
+          `https://beyondclassroom.onrender.com/project/get`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

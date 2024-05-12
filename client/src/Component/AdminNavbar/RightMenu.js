@@ -19,11 +19,14 @@ const RightMenu = ({ mode }) => {
 
   const fetchUsername = async (token) => {
     try {
-      const response = await axios.get("http://localhost:5000/user/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        `https://beyondclassroom.onrender.com/user/profile`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setUsername(response.data.username);
     } catch (error) {
       console.error("Failed to fetch username:", error);
