@@ -27,7 +27,7 @@ const AddHProjectForm = ({ onAddProject }) => {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/api/hardware/store",
+        `${process.env.BEYOND_API_BASEURL}/api/hardware/store`,
         formData,
         config
       );

@@ -10,11 +10,14 @@ export const Event = () => {
   const fetchEventData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("/add/events", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.BEYOND_API_BASEURL}/add/events`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }

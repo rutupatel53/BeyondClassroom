@@ -40,7 +40,7 @@ const ShowProblem = () => {
     (async () => {
       try {
         setLoader(true);
-        const PROBLEM_URL = `http://localhost:5000/api/problem/fing-2nd-largest-integer`;
+        const PROBLEM_URL = `${process.env.BEYOND_API_BASEURL}/api/problem/fing-2nd-largest-integer`;
         const token = localStorage.getItem("token"); // Get token from local storage
         const res = await axios.get(PROBLEM_URL, {
           headers: { Authorization: `Bearer ${token}` }, // Include token in headers
@@ -65,7 +65,7 @@ const ShowProblem = () => {
       } else if (lang === "python") {
         language = "py";
       }
-      const RUN_CODE_URL = `http://localhost:5000/api/run`;
+      const RUN_CODE_URL = `${process.env.BEYOND_API_BASEURL}/api/run`;
       const token = localStorage.getItem("token"); // Get token from local storage
       const res = await axios.post(
         RUN_CODE_URL,
@@ -91,7 +91,7 @@ const ShowProblem = () => {
       } else if (lang === "python") {
         language = "py";
       }
-      const CHECK_CODE_URL = `http://localhost:5000/api/check/fing-2nd-largest-integer`;
+      const CHECK_CODE_URL = `${process.env.BEYOND_API_BASEURL}/api/check/fing-2nd-largest-integer`;
       const token = localStorage.getItem("token"); // Get token from local storage
       const res = await axios.post(
         CHECK_CODE_URL,

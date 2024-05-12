@@ -18,7 +18,7 @@ const Register = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5000/user/register",
+        `${process.env.BEYOND_API_BASEURL}/user/register`,
         values
       );
       if (response && response.status === 201) {

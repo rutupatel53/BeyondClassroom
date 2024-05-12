@@ -49,7 +49,7 @@ const AddProblem = () => {
     event.preventDefault();
     try {
       setLoader(true);
-      const ADD_PROBLEM_URL = "http://localhost:5000/admin/problem";
+      const ADD_PROBLEM_URL = `${process.env.BEYOND_API_BASEURL}/admin/problem`;
       const successMessage = await axios.post(ADD_PROBLEM_URL, data, {
         // headers: { Authorization: token },
       });

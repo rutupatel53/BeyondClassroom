@@ -19,10 +19,13 @@ const Login = () => {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/faculty/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.BEYOND_API_BASEURL}/faculty/login`,
+        {
+          username,
+          password,
+        }
+      );
       if (response && response.data && response.data.token) {
         console.log("Login successful");
         // Store the token in local storage

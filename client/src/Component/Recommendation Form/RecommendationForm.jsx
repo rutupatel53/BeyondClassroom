@@ -33,7 +33,7 @@ export default function RecommendationForm() {
     setLoading(true);
     axios
       .post(
-        `${process.env.REACT_APP_VERCEL_ENV_BASEURL}/api/submitRecommendation`,
+        `${process.env.BEYOND_API_BASEURL}/api/submitRecommendation`,
         userData
       )
       .then((response) => {

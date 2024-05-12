@@ -33,11 +33,15 @@ const RightMenu = ({ mode }) => {
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:5000/faculty/logout", null, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.post(
+        `${process.env.BEYOND_API_BASEURL}/faculty/logout`,
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       localStorage.removeItem("token");
       setLoggedIn(false);
       setUsername("");

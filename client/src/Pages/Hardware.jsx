@@ -111,7 +111,7 @@ const Hardware = () => {
         </div>
         <div className="ml-4 flex items-center justify-center mt-5">
           <button className="bg-green-500 w-68 md:w-80 h-14 text-white font-semibold py-2 px-6 hover:bg-green-600 rounded-full">
-            s<Link to={"/addhardwareproject"}>Add New Project</Link>
+            <Link to={"/addhardwareproject"}>Add New Project</Link>
           </button>
         </div>
       </div>
